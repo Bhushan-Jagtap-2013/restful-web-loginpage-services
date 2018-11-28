@@ -4,9 +4,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class RestfulWebLoginpageServicesApplication {
+public class RestfulWebLoginPageServicesApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(RestfulWebLoginpageServicesApplication.class, args);
+		SpringApplication.run(RestfulWebLoginPageServicesApplication.class, args);
 	}
 }
