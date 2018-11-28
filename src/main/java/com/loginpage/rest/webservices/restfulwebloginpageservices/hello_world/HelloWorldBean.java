@@ -1,4 +1,4 @@
-package com.loginpage.rest.webservices.restfulwebloginpageservices;
+package com.loginpage.rest.webservices.restfulwebloginpageservices.hello_world;
 
 public class HelloWorldBean {
     private String message;

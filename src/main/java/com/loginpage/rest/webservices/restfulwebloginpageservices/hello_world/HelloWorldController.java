@@ -1,4 +1,4 @@
-package com.loginpage.rest.webservices.restfulwebloginpageservices;
+package com.loginpage.rest.webservices.restfulwebloginpageservices.hello_world;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
