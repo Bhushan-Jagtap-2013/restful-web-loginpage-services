@@ -1,0 +1,12 @@
+1. Who is configuring dispatcher servlet?
+SpringBootAutoConfiguration
+
+2. Who coverts Beans to JSON and reverse?
+Jackson2ObjectMapper*
+
+3. Error mapping?
+SpringBootAutoConfiguration
+
+4. dispatcher servlet mapped on /  and dispatcher servlet is front controller of spring MVC
+dispatcher servlet gets first request and then it finds appropriate mapping/controller and calls corresponding method
+Also converts response to appropriate format before sending back.
