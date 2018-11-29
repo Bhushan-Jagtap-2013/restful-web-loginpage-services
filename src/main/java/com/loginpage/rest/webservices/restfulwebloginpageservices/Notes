@@ -19,3 +19,59 @@ to return error message in there own format will create a mess.
 
 6. How to provide more information to consumer in terms of links?
 Use HATEOAS. We need to associate name to link. It will be provided as part of return resource object.
+
+7. How can we only return specific values when we return bean object?
+Read more about filtering:
+    1. Static filtering
+        a. add @JsonIgnore on above variable declaration
+        b. add @JsonIgnoreProperties(PropertiesTOIgnore) above bean class
+    2. Dynamic filtering
+        In controller, use MappingJacksonValue and SimpleFilterProvider and
+        SimpleFilterPropertyFilter.filterOutAllExcept("NameOfFiledToIgnore")
+        to pass different values, for different controller as part of response.
+
+8. How to document APIs and services?
+Use swagger to document services.
+
+9. How to monitor services?
+use Actuator with HAL browser to monitor services.
+
+10. how to provide support for xml?
+Just add jackson xml jar.
+
+11. How to version the services?
+    1. Virsioning using URI
+        For Ex. v1/person and V2/person
+    2. Using Request parameter
+        @GetMapping(value="/person/param", params="version=2")
+        how to call service:
+        http://localhost:8080/persion/param?version=2
+    3. Header parameter / MIME type version
+        @GetMapping(value="person/header", headers="X-API-VERSION=1")
+        Need to pass X-API-VERSION as header value
+    4. Content negotiation or Accept type version
+        same as above it will be sent as header parameter
+        @GetMapping(value = "/person/produces", produces = "application/vnd.company.app-v1+json")
+        @GetMapping(value = "/person/produces", produces = "application/vnd.company.app-v2+json")
+        In service call header.
+        pass value
+        Accept="application/vnd.company.app-v2+json"
+
+12. Factors to consider while choosing one of the method to version URI
+    1. URI Pollution - We end up creating lot of them
+    2. Misuse of HTTP header
+    3. caching - version is part of URI so you can cache it
+    4. can we execute request on browser - for example to modify header you need special tool. you can not use browser
+    5. API documentation
+
+13. Authenticating RESTful web services
+    1. basic authentication
+    2. OAuth
+    3. Password digest
+
+    Use spring-boot-starter-security
+    add in application.properties:
+        security.user.name=username
+        security.user.password=password
+
+
