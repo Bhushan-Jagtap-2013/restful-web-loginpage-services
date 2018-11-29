@@ -1,3 +1,6 @@
+Notes
+Author : Bhushan Jagtap
+
 1. Who is configuring dispatcher servlet?
 SpringBootAutoConfiguration
 
@@ -13,3 +16,6 @@ Also converts response to appropriate format before sending back.
 
 5. There should be consistent exception or error message in entire organization or web services. If everyone started
 to return error message in there own format will create a mess.
+
+6. How to provide more information to consumer in terms of links?
+Use HATEOAS. We need to associate name to link. It will be provided as part of return resource object.
