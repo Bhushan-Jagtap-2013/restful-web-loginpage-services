@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
 
@@ -27,8 +28,12 @@ public class UserResource {
         return ret;
     }
 
+    /*
+    Validate input to method using Valid annotation
+     */
+
     @PostMapping(path = "/users")
-    public ResponseEntity<Object> addUser(@RequestBody UserBean user) {
+    public ResponseEntity<Object> addUser(@Valid @RequestBody UserBean user) {
         UserBean addedUser = service.insert(user);
 
         /*

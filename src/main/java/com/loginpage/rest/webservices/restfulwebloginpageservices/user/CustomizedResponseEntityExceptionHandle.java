@@ -1,7 +1,9 @@
 package com.loginpage.rest.webservices.restfulwebloginpageservices.user;
 
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,5 +26,15 @@ public class CustomizedResponseEntityExceptionHandle extends ResponseEntityExcep
     public final ResponseEntity<Object> handleUserNotFoundException(UserNotFoundException ex, WebRequest request) throws Exception {
         CustomExceptionResponse cr = new CustomExceptionResponse(new Date(), ex.getMessage(), request.getDescription(false));
         return  new ResponseEntity(cr, HttpStatus.NOT_FOUND);
+    }
+
+    /*
+    Override binding exception to provide appropriate message on validation failure.
+     */
+
+    @Override
+    protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
+        CustomExceptionResponse cr = new CustomExceptionResponse(new Date(), "Validation Failed on input arguments", ex.getBindingResult().toString());
+        return  new ResponseEntity(cr, HttpStatus.BAD_REQUEST);
     }
 }
