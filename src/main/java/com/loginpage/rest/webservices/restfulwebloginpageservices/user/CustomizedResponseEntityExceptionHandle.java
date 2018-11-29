@@ -16,13 +16,13 @@ public class CustomizedResponseEntityExceptionHandle extends ResponseEntityExcep
 
     @ExceptionHandler(Exception.class)
     public final ResponseEntity<Object> handleAllException(Exception ex, WebRequest request) throws Exception {
-        CustomExeceptionResponse cr = new CustomExeceptionResponse(new Date(), ex.getMessage(), request.getDescription(false));
+        CustomExceptionResponse cr = new CustomExceptionResponse(new Date(), ex.getMessage(), request.getDescription(false));
         return  new ResponseEntity(cr, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @ExceptionHandler(UserNotFoundException.class)
     public final ResponseEntity<Object> handleUserNotFoundException(UserNotFoundException ex, WebRequest request) throws Exception {
-        CustomExeceptionResponse cr = new CustomExeceptionResponse(new Date(), ex.getMessage(), request.getDescription(false));
+        CustomExceptionResponse cr = new CustomExceptionResponse(new Date(), ex.getMessage(), request.getDescription(false));
         return  new ResponseEntity(cr, HttpStatus.NOT_FOUND);
     }
 }

@@ -43,4 +43,12 @@ public class UserResource {
         uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(addedUser.getId()).toUri();
         return ResponseEntity.created(uri).build();
     }
+
+    @DeleteMapping(path = "/users/{id}")
+    public void addUser(@PathVariable int id) {
+        UserBean removeUser = service.remove(id);
+        if (removeUser == null) {
+            throw  new UserNotFoundException("id " + id);
+        }
+    }
 }

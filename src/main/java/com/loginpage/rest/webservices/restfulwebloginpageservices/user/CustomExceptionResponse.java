@@ -2,12 +2,12 @@ package com.loginpage.rest.webservices.restfulwebloginpageservices.user;
 
 import java.util.Date;
 
-public class CustomExeceptionResponse {
+public class CustomExceptionResponse {
     private Date timestamp;
     private String message;
     private String details;
 
-    public CustomExeceptionResponse(Date timestamp, String message, String details) {
+    public CustomExceptionResponse(Date timestamp, String message, String details) {
         super();
         this.timestamp = timestamp;
         this.message = message;
