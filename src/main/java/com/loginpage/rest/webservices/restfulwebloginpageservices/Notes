@@ -74,4 +74,18 @@ Just add jackson xml jar.
         security.user.name=username
         security.user.password=password
 
+14. Handling in memory data base with JPA and H2
+    Create table in database by marking bean with @Entity
+    Mark primary key with @Id
+    Mark auto-generated values in bean with @GeneratedValue
+
+    Spring framework will automatically create database with required data type.
+    We cas see create query on application boot.
+
+15. Insert values in database on boot by executing query
+    create file in resources folder with name data.sql and add some insert commands
+
+16. How to access and see values in h2 database
+    use url: http://localhost:8080/h2-console
+    Note Make sure JDBC URL is jdbc:h2:mem:testdb
 

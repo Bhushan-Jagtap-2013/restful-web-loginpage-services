@@ -1,9 +1,13 @@
 package com.loginpage.rest.webservices.restfulwebloginpageservices.user;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 import java.util.Date;
 
+@Entity
 public class UserBean {
 
     /*
@@ -19,6 +23,9 @@ public class UserBean {
 
     @Past(message = "Date of birth should be less than current date")
     private Date dob;
+
+    @Id
+    @GeneratedValue
     private Integer id;
 
     /*
