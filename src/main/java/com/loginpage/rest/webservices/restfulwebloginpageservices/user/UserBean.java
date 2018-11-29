@@ -7,7 +7,14 @@ public class UserBean {
     private Date dob;
     private Integer id;
 
+    /*
+    We need default constructor as it will give
+    use error using post method call
+     */
+    protected UserBean() {}
+
     public UserBean(String name, Date dob, Integer id) {
+        super();
         this.name = name;
         this.dob = dob;
         this.id = id;
