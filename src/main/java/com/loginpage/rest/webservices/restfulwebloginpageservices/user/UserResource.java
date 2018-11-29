@@ -14,13 +14,17 @@ public class UserResource {
     private UserDAOService service;
 
     @GetMapping(path = "/users")
-    public List<UserBean> getAllUsers(){
+    public List<UserBean> getAllUsers() {
         return service.getAll();
     }
 
     @GetMapping(path = "/users/{id}")
-    public UserBean getUser(@PathVariable  int id) {
-        return  service.find(id);
+    public UserBean getUser(@PathVariable int id) {
+        UserBean ret = service.find(id);
+        if (ret == null) {
+            throw new UserNotFoundException("user id - " + id);
+        }
+        return ret;
     }
 
     @PostMapping(path = "/users")
