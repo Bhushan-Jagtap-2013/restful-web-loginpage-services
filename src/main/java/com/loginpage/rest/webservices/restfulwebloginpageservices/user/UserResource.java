@@ -8,24 +8,28 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class UserResource {
     @Autowired
     private UserDAOService service;
 
+    @Autowired
+    private UserRepository userRepository;
+
     @GetMapping(path = "/users")
     public List<UserBean> getAllUsers() {
-        return service.getAll();
+        return userRepository.findAll();
     }
 
     @GetMapping(path = "/users/{id}")
     public UserBean getUser(@PathVariable int id) {
-        UserBean ret = service.find(id);
-        if (ret == null) {
+        Optional<UserBean> ret = userRepository.findById(id);
+        if (!ret.isPresent()) {
             throw new UserNotFoundException("user id - " + id);
         }
-        return ret;
+        return ret.get();
     }
 
     /*
@@ -34,7 +38,7 @@ public class UserResource {
 
     @PostMapping(path = "/users")
     public ResponseEntity<Object> addUser(@Valid @RequestBody UserBean user) {
-        UserBean addedUser = service.insert(user);
+        UserBean addedUser = userRepository.save(user);
 
         /*
          It is HTTP best practice to return status as created : 201
@@ -51,9 +55,6 @@ public class UserResource {
 
     @DeleteMapping(path = "/users/{id}")
     public void addUser(@PathVariable int id) {
-        UserBean removeUser = service.remove(id);
-        if (removeUser == null) {
-            throw  new UserNotFoundException("id " + id);
-        }
+        userRepository.deleteById(id);
     }
 }
