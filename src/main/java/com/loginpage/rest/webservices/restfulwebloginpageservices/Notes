@@ -89,3 +89,21 @@ Just add jackson xml jar.
     use url: http://localhost:8080/h2-console
     Note Make sure JDBC URL is jdbc:h2:mem:testdb
 
+17. How RESTful your services are?
+    Model  :    Richardson Maturity Model
+
+    Level 0:    Exposes SOAP web services in rest style
+                e.g. http://server/getPosts
+
+    Level 1:    + Exposes resources with proper URI (Thinking in term of resources
+                e.g. http://server/user/1
+                No proper HTTP methods
+
+    Level 2:    + proper HTTP methods
+                e.g. Uses DELETE method for deleting user
+
+    Level 3:    + HETEAOS
+                Data + Next possible actions
+                e.g. in social media app while getting post also return link to 'like post'
+
+
